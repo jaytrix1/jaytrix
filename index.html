@@ -4,227 +4,144 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jaytrix | Portfolio</title>
+    
     <link rel="stylesheet" href="style.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=Poppins:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
+    <!-- Section: Updated Intro Screen -->
     <section class="intro-screen">
         <div class="avatar-container">
             <img src="avatar.png" alt="Jaytrix Avatar" class="avatar-img">
         </div>
         
         <div class="intro-text">
-            <p>16 y/o experienced Discord staff member from India.</p>
-            <p>I build servers, set up bots, and help communities thrive.</p>
-            <p>I've been doing moderation and management for 2 years.</p>
+            <h1>Jaytrix</h1>
+            <p>I've been moderating and managing Minecraft and community servers for over 2 years.</p>
+            <p>Dedicated to creating safe, organized, and high-performing community spaces.</p>
         </div>
 
         <div class="intro-badges">
             <span class="intro-badge"><i class="fa-solid fa-location-dot"></i> India</span>
-            <span class="intro-badge"><i class="fa-solid fa-cake-candles"></i> 16 y/o</span>
+            <span class="intro-badge"><i class="fa-solid fa-clock"></i> 2+ Years Exp</span>
         </div>
     </section>
 
     <main class="container">
+
         <div class="scroll-indicator">
             <span class="scroll-text">SCROLL</span>
             <i class="fa-solid fa-chevron-down"></i>
         </div>
 
+        <!-- Section: Consolidated Servers -->
         <section class="section-group">
             <div class="section-header">
-                <span class="eyebrow">CURRENTLY</span>
-                <span class="counter">2 active</span>
+                <span class="eyebrow">EXPERIENCE</span>
             </div>
-            <h1>Servers I work on</h1>
+            <h1>Servers I've worked on</h1>
+            
             <div class="cards-grid">
-                <a href="#" class="server-card">
-                    <img src="cavern.png" alt="Cavern" class="server-logo">
+                <!-- Cavern -->
+                <div class="server-card">
+                    <img src="cavern.png" alt="Cavern Logo" class="server-logo">
                     <div class="server-details">
                         <span class="server-name">Cavern</span>
-                        <div class="badges"><span class="badge owner">Admin</span></div>
+                        <div class="badges">
+                            <span class="badge owner">Admin</span>
+                            <span class="server-count">6K+ Members</span>
+                        </div>
                     </div>
-                </a>
-                <a href="#" class="server-card">
-                    <img src="plumsmp.png" alt="PlumSMP" class="server-logo">
+                </div>
+                
+                <!-- PlumSMP -->
+                <div class="server-card">
+                    <img src="plumsmp.png" alt="PlumSMP Logo" class="server-logo">
                     <div class="server-details">
                         <span class="server-name">PlumSMP</span>
-                        <div class="badges"><span class="badge mod">Operator</span></div>
+                        <div class="badges">
+                            <span class="badge mod">Operator</span>
+                        </div>
                     </div>
-                </a>
-            </div>
-        </section>
-
-        <section class="section-group">
-            <div class="section-header"><span class="eyebrow">HISTORY</span></div>
-            <h1>Past Projects</h1>
-            <div class="cards-grid">
-                <div class="server-card">
-                    <img src="firemc.png" alt="FireMC" class="server-logo">
-                    <div class="server-details"><span class="server-name">FireMC</span></div>
                 </div>
-                <div class="server-card">
-                    <img src="portalmc.png" alt="PortalMC" class="server-logo">
-                    <div class="server-details"><span class="server-name">PortalMC</span></div>
-                </div>
-            </div>
-        </section>
-    </main>
-</body>
-</html>
-            <h1>Past experience</h1>
 
-            <div class="cards-grid">
-                <!-- Card 1: FireMC (150K) -->
-                <a href="#" class="server-card">
-                    <div class="server-logo-placeholder">F</div>
+                <!-- FireMC -->
+                <div class="server-card">
+                    <img src="firemc.png" alt="FireMC Logo" class="server-logo">
                     <div class="server-details">
                         <span class="server-name">FireMC</span>
-                        <div class="status-count">
-                            <span class="retired-mod">Retired</span>
-                            <span class="server-count"><i class="fa-solid fa-users"></i> 150K+</span>
+                        <div class="badges">
+                            <span class="badge helper">Staff</span>
                         </div>
                     </div>
-                    <i class="fa-solid fa-arrow-up-right-from-square card-icon"></i>
-                </a>
+                </div>
 
-                <!-- Card 2: PlumSMP (7K) -->
-                <a href="#" class="server-card">
-                    <div class="server-logo-placeholder">P</div>
-                    <div class="server-details">
-                        <span class="server-name">PlumSMP</span>
-                        <div class="status-count">
-                            <span class="retired-mod">Retired</span>
-                            <span class="server-count"><i class="fa-solid fa-users"></i> 7K+</span>
-                        </div>
-                    </div>
-                    <i class="fa-solid fa-arrow-up-right-from-square card-icon"></i>
-                </a>
-
-                <!-- Card 3: PortalMC (3K) -->
-                <a href="#" class="server-card">
-                    <div class="server-logo-placeholder">P</div>
+                <!-- PortalMC -->
+                <div class="server-card">
+                    <img src="portalmc.png" alt="PortalMC Logo" class="server-logo">
                     <div class="server-details">
                         <span class="server-name">PortalMC</span>
-                        <div class="status-count">
-                            <span class="retired-mod">Retired</span>
-                            <span class="server-count"><i class="fa-solid fa-users"></i> 3K+</span>
+                        <div class="badges">
+                            <span class="badge helper">Moderator</span>
                         </div>
                     </div>
-                    <i class="fa-solid fa-arrow-up-right-from-square card-icon"></i>
-                </a>
-
-                <!-- Card 4: Hypersteal (3K) -->
-                <a href="#" class="server-card">
-                    <div class="server-logo-placeholder">H</div>
-                    <div class="server-details">
-                        <span class="server-name">Hypersteal</span>
-                        <div class="status-count">
-                            <span class="retired-mod">Retired</span>
-                            <span class="server-count"><i class="fa-solid fa-users"></i> 3K+</span>
-                        </div>
-                    </div>
-                    <i class="fa-solid fa-arrow-up-right-from-square card-icon"></i>
-                </a>
-
+                </div>
             </div>
         </section>
 
-        <!-- Section: Stats Blocks (Modified as requested) -->
+        <!-- Stats Section -->
         <section class="stats-section">
             <div class="stat-block">
-                <i class="fa-solid fa-users-viewfinder stat-icon communities"></i>
-                <span class="stat-number">15+</span> <!-- Updated -->
+                <span class="stat-number">15+</span>
                 <span class="stat-label">Communities</span>
             </div>
             <div class="stat-block">
-                <i class="fa-solid fa-user-group stat-icon members"></i>
-                <span class="stat-number">5000</span> <!-- Updated -->
-                <span class="stat-label">Players reached</span> <!-- Updated -->
+                <span class="stat-number">5000+</span>
+                <span class="stat-label">Players Reached</span>
             </div>
             <div class="stat-block">
-                <i class="fa-solid fa-star-of-life stat-icon staffing"></i>
-                <span class="stat-number">2+</span> <!-- Updated from intro bio -->
-                <span class="stat-label">Years staffing</span>
+                <span class="stat-number">2+</span>
+                <span class="stat-label">Years Staffing</span>
             </div>
         </section>
 
-        <!-- Section: A bit about me -->
-        <section class="about-section">
+        <!-- Final Clean About Section -->
+        <section class="section-group">
             <div class="section-header">
                 <span class="eyebrow">ABOUT</span>
             </div>
-            <h1>A bit about me</h1>
-            
-            <div class="about-content">
-                <p>I've been working in Discord communities for years, moderating, helping members, setting up bots, and now owning my own server. I take my staff work seriously because the people in these communities deserve a space that's safe, organized and actually fun to be in.</p>
-                <p>Outside of moderation I'm picking up scripting so I can build my own tools and automations. Always learning, always shipping.</p>
-            </div>
-        </section>
+            <h2>A bit about me</h2>
+            <p class="about-text">
+                I take my staff work seriously because the people in these communities deserve a space that's safe, organized, and actually fun to be in. 
+                I focus on high-level moderation and efficient staff management to help servers thrive.
+            </p>
 
-        <!-- Section: Skills & services (Modified as requested from image_2.png) -->
-        <section class="section-group">
-            <div class="section-header">
+            <div class="section-header" style="margin-top: 2rem;">
                 <span class="eyebrow">WHAT I DO</span>
             </div>
-            <h1>Skills & services</h1>
-
+            <h2>Skills & services</h2>
             <div class="cards-grid">
                 <div class="skill-card">
-                    <i class="fa-solid fa-shield"></i>
+                    <i class="fa-solid fa-shield-halved"></i>
                     <h3>Moderation</h3>
-                    <p>Keeping communities clean, safe and welcoming.</p>
+                    <p>Keeping communities clean, safe, and welcoming.</p>
                 </div>
-                <!-- Replaced Bot & Plugin Setup -->
                 <div class="skill-card">
                     <i class="fa-solid fa-users-gear"></i>
                     <h3>Staff Management</h3>
                     <p>Recruiting, training, and overseeing high-performing teams.</p>
                 </div>
-                <!-- Replaced Server Building -->
-                <div class="skill-card">
-                    <i class="fa-solid fa-comments"></i>
-                    <h3>Community Management</h3>
-                    <p>Engaging members and driving organic growth and activity.</p>
-                </div>
-                <!-- Replaced Admin Maintenance -->
-                <div class="skill-card">
-                    <i class="fa-solid fa-code"></i>
-                    <h3>Development</h3>
-                    <p>Custom scripting, technical optimization, and automation.</p>
-                </div>
             </div>
         </section>
 
     </main>
-
-</body>
-</html>
-
-        <!-- Section: A bit about me -->
-        <section class="about-section">
-            <div class="section-header">
-                <span class="eyebrow">ABOUT</span>
-            </div>
-            <h1>A bit about me</h1>
-            
-            <div class="about-content">
-                <p>I've been working in Discord communities for years, moderating, helping members, setting up bots, and now owning my own server. I take my staff work seriously because the people in these communities deserve a space that's safe, organized and actually fun to be in.</p>
-                <p>Outside of moderation I'm picking up scripting so I can build my own tools and automations. Always learning, always shipping.</p>
-            </div>
-        </section>
-
-        <!-- Section: Skills & services (Bottom slice) -->
-        <section class="section-group">
-            <div class="section-header">
-                <span class="eyebrow">WHAT I DO</span>
-            </div>
-            <h1>Skills & services</h1>
-        </section>
-
-    </main>
-
 </body>
 </html>
