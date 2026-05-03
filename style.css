@@ -4,74 +4,50 @@
     padding: 0;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 :root {
-    /* Blue Theme Palette */
-    --bg-color: #f0f9ff; /* Very light sky blue */
-    --card-bg: #ffffff; /* Clean white for cards */
-    --border-color: #bae6fd; /* Light blue borders */
-    --text-primary: #0369a1; /* Deep blue for titles */
-    --text-secondary: #0ea5e9; /* Medium blue for descriptions */
-    --accent-blue: #0284c7; /* Primary accent blue */
-    --avatar-glow: rgba(14, 165, 233, 0.3);
+    /* Muted Dark Blue Theme */
+    --bg-color: #050a15; /* Deeper, less bright midnight blue */
+    --card-bg: #0d1425; /* Muted dark blue for cards */
+    --border-color: #1e293b; /* Subtle border */
+    --text-primary: #f1f5f9; /* Soft white */
+    --text-secondary: #94a3b8; /* Muted slate blue */
+    --accent-blue: #38bdf8; /* Soft cyan glow */
+    --glow-color: rgba(56, 189, 248, 0.15); /* Soft, non-blinding glow */
     
     /* Server Badge Colors */
-    --badge-owner: #0369a1;
-    --badge-mod: #0ea5e9;
-    --badge-helper: #38bdf8;
-
-    /* Stat Icon Accent Colors */
-    --icon-communities: #2563eb; 
-    --icon-members: #0284c7;
-    --icon-staffing: #0ea5e9;
+    --badge-owner: #0ea5e9;
+    --badge-mod: #0284c7;
+    --badge-helper: #0369a1;
 }
 
 body {
     background-color: var(--bg-color);
-    /* Subtle blue dot pattern instead of stars */
-    background-image: radial-gradient(#bae6fd 1px, transparent 1px);
-    background-size: 30px 30px;
-    
     color: var(--text-primary);
     font-family: 'IBM Plex Sans', sans-serif;
-    font-weight: 400;
-    line-height: 1.5;
+    overflow-x: hidden;
+    line-height: 1.6;
+    /* Moving Background Effect */
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(56, 189, 248, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(14, 165, 233, 0.05) 0%, transparent 50%);
+    animation: bgMove 20s ease-infinite alternate;
+}
+
+/* Subtle background movement animation */
+@keyframes bgMove {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
 }
 
 .container {
     max-width: 800px;
     margin: 0 auto;
-    padding: 0 20px 50px;
+    padding: 0 20px 80px;
 }
 
-/* Typography */
-h1 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    font-size: 2.2rem;
-    margin-bottom: 2rem;
-    color: var(--text-primary);
-    letter-spacing: -0.5px;
-}
-
-.eyebrow {
-    color: var(--accent-blue);
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-weight: 600;
-    font-size: 0.75rem;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-}
-
-.counter {
-    color: var(--text-secondary);
-    font-size: 0.8rem;
-    margin-left: auto;
-}
-
-/* 1. Intro Screen Section (Matches layout from Screenshot_20260503-200612.jpg) */
+/* 1. Intro Screen (Matches Screenshot_20260503-200612.jpg layout) */
 .intro-screen {
     height: 100vh;
     display: flex;
@@ -79,16 +55,13 @@ h1 {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 0 20px;
-    background: linear-gradient(180deg, #e0f2fe 0%, #f0f9ff 100%);
 }
 
 .avatar-container {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
+    width: 160px;
+    height: 160px;
+    margin-bottom: 2.5rem;
     position: relative;
-    margin-bottom: 3rem;
 }
 
 .avatar-img {
@@ -96,15 +69,146 @@ h1 {
     height: 100%;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid #ffffff;
-    box-shadow: 0 10px 25px var(--avatar-glow);
+    border: 2px solid var(--accent-blue);
+    /* Pulsating Glow Effect */
+    box-shadow: 0 0 20px var(--glow-color);
+    animation: pulseGlow 4s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 15px var(--glow-color); transform: scale(1); }
+    50% { box-shadow: 0 0 30px rgba(56, 189, 248, 0.3); transform: scale(1.02); }
 }
 
 .intro-text p {
-    font-size: 1.1rem;
-    color: var(--text-primary);
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.4rem;
+    max-width: 300px; /* Matching Screenshot_20260503-200612.jpg center-stack */
+}
+
+.intro-badges {
+    display: flex;
+    gap: 12px;
+    margin-top: 1.5rem;
+}
+
+.intro-badge {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--accent-blue);
+    font-size: 0.75rem;
+    padding: 6px 14px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Section Styling (Matches Screenshot_20260503-193540.jpg layout) */
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.5px;
+}
+
+.eyebrow {
+    color: #7dd3fc; /* Brighter accent for readability */
+    font-weight: 600;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: block;
     margin-bottom: 0.5rem;
-    font-weight: 500;
+}
+
+/* Grid & Cards */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.server-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+.server-card:hover {
+    border-color: var(--accent-blue);
+    background: #111a30;
+    transform: translateY(-3px);
+}
+
+.server-logo, .server-logo-placeholder {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    margin-right: 1rem;
+}
+
+.server-logo-placeholder {
+    background: #1e293b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: var(--accent-blue);
+}
+
+.badge {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-right: 8px;
+    color: white;
+}
+
+/* Stats (Matches columns in Screenshot_20260503-193540.jpg) */
+.stats-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 4rem 0;
+}
+
+.stat-block {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 2rem 1rem;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 1.8rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+/* Mobile Tweak */
+@media (max-width: 600px) {
+    .stats-section { grid-template-columns: 1fr; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .intro-screen { height: auto; padding: 100px 20px; }
+}
 }
 
 .intro-badges {
