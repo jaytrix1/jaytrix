@@ -4,55 +4,165 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AL | Portfolio</title>
+    
+    <!-- CSS link -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=Poppins:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for the arrow icon -->
+    <script src="https://kit.fontawesome.com/your-kit-id.js" crossorigin="anonymous"></script> 
+    <!-- Note: Replace 'your-kit-id' with your actual FontAwesome kit ID or use their CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-    <header>
-        <nav>
-            <div class="logo">AL.</div>
-            <ul>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- This section mimics the top status bar of the phone from image_0.png -->
+    <div class="status-bar-spacer"></div>
 
-    <section class="hero">
-        <h1>Creative Developer & Designer</h1>
-        <p>Building immersive digital experiences and custom assets.</p>
-        <a href="#projects" class="btn">View My Work</a>
-    </section>
+    <main class="container">
 
-    <section id="projects" class="container">
-        <h2>Featured Projects</h2>
-        <div class="grid">
-            <div class="card">
-                <div class="card-image"></div>
-                <h3>Project One</h3>
-                <p>Custom branding and technical configuration.</p>
-            </div>
-            <div class="card">
-                <div class="card-image"></div>
-                <h3>Project Two</h3>
-                <p>UI/UX design for web-based interfaces.</p>
-            </div>
-            <div class="card">
-                <div class="card-image"></div>
-                <h3>Project Three</h3>
-                <p>Advanced system administration and tools.</p>
-            </div>
+        <!-- Top scroll indicator (from image_1.png) -->
+        <div class="scroll-indicator">
+            <span class="scroll-text">SCROLL</span>
+            <i class="fa-solid fa-chevron-down"></i>
         </div>
-    </section>
 
-    <footer id="contact">
-        <p>&copy; 2026 AL. Built with passion.</p>
-        <div class="socials">
-            <a href="#">Discord</a>
-            <a href="#">GitHub</a>
-        </div>
-    </footer>
+        <!-- Section: Servers I work on -->
+        <section class="section-group">
+            <div class="section-header">
+                <span class="eyebrow">CURRENTLY</span>
+                <span class="counter">3 active</span>
+            </div>
+            <h1>Servers I work on</h1>
+            
+            <div class="cards-grid">
+                <!-- Card 1: AxonMC -->
+                <a href="#" class="server-card">
+                    <img src="axon-logo.png" alt="AxonMC Logo" class="server-logo">
+                    <div class="server-details">
+                        <span class="server-name">AxonMC (Prism SMP)</span>
+                        <div class="badges">
+                            <span class="badge owner">Owner</span>
+                            <span class="server-count"><i class="fa-solid fa-users"></i> 700+</span>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right-from-square card-icon"></i>
+                </a>
+
+                <!-- Card 2: SMP Finder -->
+                <a href="#" class="server-card">
+                    <img src="smpfinder-logo.png" alt="SMP Finder Logo" class="server-logo">
+                    <div class="server-details">
+                        <span class="server-name">SMP Finder</span>
+                        <div class="badges">
+                            <span class="badge mod">Mod</span>
+                            <span class="server-count"><i class="fa-solid fa-users"></i> 45K+</span>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right-from-square card-icon"></i>
+                </a>
+
+                <!-- Card 3: MineHeart -->
+                <a href="#" class="server-card">
+                    <img src="mineheart-logo.png" alt="MineHeart Logo" class="server-logo">
+                    <div class="server-details">
+                        <span class="server-name">MineHeart</span>
+                        <div class="badges">
+                            <span class="badge helper">Helper</span>
+                            <span class="server-count"><i class="fa-solid fa-users"></i> 25K+</span>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right-from-square card-icon"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- Section: Past experience -->
+        <section class="section-group">
+            <div class="section-header">
+                <span class="eyebrow">PREVIOUSLY</span>
+                <span class="counter">7 retired</span>
+            </div>
+            <h1>Past experience</h1>
+
+            <div class="cards-grid">
+                <!-- Card 1: PotionMC -->
+                <a href="#" class="server-card">
+                    <img src="potionmc-logo.png" alt="PotionMC Logo" class="server-logo">
+                    <div class="server-details">
+                        <span class="server-name">PotionMC</span>
+                        <div class="status-count">
+                            <span class="retired-mod">Retired Mod</span>
+                            <span class="server-count"><i class="fa-solid fa-users"></i> 6.5K+</span>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right-from-square card-icon"></i>
+                </a>
+
+                <!-- StaticPVP, Cavern, Echo Network, KyroMC, ClassicMC, FireSMP go here, matching the structure above -->
+                <!-- Add similar blocks for each server... -->
+                
+                 <!-- Placeholder for KyroMC to show text difference -->
+                <a href="#" class="server-card">
+                    <img src="kyromc-logo.png" alt="KyroMC Logo" class="server-logo">
+                    <div class="server-details">
+                        <span class="server-name">KyroMC</span>
+                        <div class="status-count">
+                            <span class="retired-mod">Retired Admin + CMA</span>
+                            <span class="server-count"><i class="fa-solid fa-users"></i> 3.5K+</span>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right-from-square card-icon"></i>
+                </a>
+
+            </div>
+        </section>
+
+        <!-- Section: Stats Blocks -->
+        <section class="stats-section">
+            <div class="stat-block">
+                <i class="fa-solid fa-users-viewfinder stat-icon communities"></i>
+                <span class="stat-number">10+</span>
+                <span class="stat-label">Communities</span>
+            </div>
+            <div class="stat-block">
+                <i class="fa-solid fa-user-group stat-icon members"></i>
+                <span class="stat-number">100K+</span>
+                <span class="stat-label">Members reached</span>
+            </div>
+            <div class="stat-block">
+                <i class="fa-solid fa-star-of-life stat-icon staffing"></i>
+                <span class="stat-number">3+</span>
+                <span class="stat-label">Years staffing</span>
+            </div>
+        </section>
+
+        <!-- Section: A bit about me -->
+        <section class="about-section">
+            <div class="section-header">
+                <span class="eyebrow">ABOUT</span>
+            </div>
+            <h1>A bit about me</h1>
+            
+            <div class="about-content">
+                <p>I've been working in Discord communities for years, moderating, helping members, setting up bots, and now owning my own server. I take my staff work seriously because the people in these communities deserve a space that's safe, organized and actually fun to be in.</p>
+                <p>Outside of moderation I'm picking up scripting so I can build my own tools and automations. Always learning, always shipping.</p>
+            </div>
+        </section>
+
+        <!-- Section: Skills & services (Bottom slice) -->
+        <section class="section-group">
+            <div class="section-header">
+                <span class="eyebrow">WHAT I DO</span>
+            </div>
+            <h1>Skills & services</h1>
+        </section>
+
+    </main>
 
 </body>
 </html>
