@@ -1,3 +1,25 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
+
+:root {
+    --bg-color: #020b1a; 
+    --card-bg: rgba(10, 25, 47, 0.7);
+    --border-color: rgba(56, 189, 248, 0.2); 
+    --text-primary: #e0f2fe; 
+    --text-secondary: #7dd3fc; 
+    --accent-blue: #38bdf8; 
+    --glow-color: rgba(56, 189, 248, 0.4); 
+    
+    --badge-owner: #0369a1;
+    --badge-mod: #0ea5e9;
+    --badge-helper: #38bdf8;
+}
+
 body {
     background-color: var(--bg-color);
     color: var(--text-primary);
@@ -5,11 +27,11 @@ body {
     overflow-x: hidden;
     line-height: 1.6;
     position: relative;
+    min-height: 100vh;
 }
 
-/* 1. The Moving Technical Grid */
-body::before {
-    content: "";
+/* 1. Moving Technical Grid */
+.grid-bg {
     position: fixed;
     top: 0;
     left: 0;
@@ -18,55 +40,27 @@ body::before {
     background-image: 
         linear-gradient(rgba(56, 189, 248, 0.05) 1px, transparent 1px),
         linear-gradient(90deg, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
-    background-size: 60px 60px;
-    z-index: -2;
-    animation: gridMove 40s linear infinite;
+    background-size: 50px 50px;
+    z-index: -3;
+    animation: gridMove 30s linear infinite;
 }
 
-/* 2. Floating "Management & Dev" Structures */
-/* This adds floating technical shapes behind your UI */
-body::after {
-    content: "⚙ \002699  \002692  \00 shield"; /* Unicode for gear, hammer, screw-like tools */
-    font-family: "Font Awesome 6 Free";
-    font-weight: 900;
+/* 2. Management & Dev "Structures" (Floating Background Shapes) */
+.structures-bg {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    color: rgba(56, 189, 248, 0.03);
-    font-size: 15rem;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    z-index: -1;
+    z-index: -2;
+    opacity: 0.1;
     pointer-events: none;
-    filter: blur(2px);
-    animation: structureFloat 25s ease-in-out infinite alternate;
+    /* This creates a gear and tool-like silhouette pattern */
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 30c-11 0-20 9-20 20s9 20 20 20 20-9 20-20-9-20-20-20zm0 30c-5.5 0-10-4.5-10-10s4.5-10 10-10 10 4.5 10 10-4.5 10-10 10zM10 10h10v10H10V10zm70 70h10v10H80V80z' fill='%2338bdf8' fill-opacity='1'/%3E%3C/svg%3E");
+    animation: structureFloat 40s ease-in-out infinite alternate;
 }
 
-/* Animations for Grid and Technical Structures */
-@keyframes gridMove {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(-60px, -60px); }
-}
-
-@keyframes structureFloat {
-    0% { 
-        transform: rotate(0deg) translate(0, 0); 
-        text-shadow: 0 0 20px rgba(56, 189, 248, 0);
-    }
-    50% { 
-        transform: rotate(5deg) translate(2%, 5%); 
-        text-shadow: 0 0 40px rgba(56, 189, 248, 0.1);
-    }
-    100% { 
-        transform: rotate(-5deg) translate(-2%, -5%); 
-        text-shadow: 0 0 20px rgba(56, 189, 248, 0);
-    }
-}
-
-/* 3. Frosty Ambient Glow Orbs */
+/* 3. Frosty Glow Orbs */
 .glow-layer {
     position: fixed;
     top: 0;
@@ -74,9 +68,112 @@ body::after {
     width: 100%;
     height: 100%;
     background: 
-        radial-gradient(circle at 15% 25%, rgba(56, 189, 248, 0.12) 0%, transparent 35%),
-        radial-gradient(circle at 85% 75%, rgba(14, 165, 233, 0.08) 0%, transparent 35%);
-    filter: blur(60px);
+        radial-gradient(circle at 10% 10%, rgba(56, 189, 248, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 90% 90%, rgba(14, 165, 233, 0.1) 0%, transparent 40%);
+    filter: blur(80px);
     z-index: -1;
-    pointer-events: none;
+}
+
+@keyframes gridMove {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-50px, -50px); }
+}
+
+@keyframes structureFloat {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(-20px) rotate(5deg); }
+}
+
+/* --- Content Layout --- */
+
+.container {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 40px 20px 100px;
+    position: relative;
+    z-index: 10;
+}
+
+.intro-screen {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.avatar-container {
+    width: 160px;
+    height: 160px;
+    margin-bottom: 2rem;
+}
+
+.avatar-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--accent-blue);
+    box-shadow: 0 0 40px var(--glow-color);
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.2rem;
+    margin-top: 1.5rem;
+}
+
+/* Glass Effect Cards */
+.server-card, .stat-block, .skill-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: 0.3s ease;
+}
+
+.server-card:hover {
+    border-color: var(--accent-blue);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.server-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    margin-right: 1rem;
+}
+
+/* Titles */
+h1, h2 {
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.eyebrow {
+    color: var(--accent-blue);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.stats-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 4rem 0;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent-blue);
+    display: block;
 }
