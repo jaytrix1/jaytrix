@@ -1,443 +1,65 @@
-/* General Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-}
-
-:root {
-    /* Frosty Blue Theme Palette */
-    --bg-color: #020b1a; /* Darker navy base to make the light blue pop */
-    --card-bg: #0a192f; /* Deep blue for cards */
-    --border-color: #1e3a8a; /* Stronger blue borders */
-    --text-primary: #e0f2fe; /* Light sky blue text */
-    --text-secondary: #7dd3fc; /* Mid-tone blue */
-    --accent-blue: #38bdf8; /* Bright cyan/light blue for glow */
-    --glow-color: rgba(56, 189, 248, 0.4); /* Stronger frosty glow */
-    
-    /* Role Badges */
-    --badge-owner: #0369a1;
-    --badge-mod: #0ea5e9;
-    --badge-helper: #38bdf8;
-}
-
 body {
     background-color: var(--bg-color);
     color: var(--text-primary);
     font-family: 'IBM Plex Sans', sans-serif;
+    margin: 0;
     overflow-x: hidden;
-    line-height: 1.6;
-
-    /* Moving Frost Background */
-    background-image: 
-        radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.1) 0%, transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(14, 165, 233, 0.1) 0%, transparent 40%),
-        radial-gradient(circle at 50% 50%, rgba(2, 132, 199, 0.05) 0%, transparent 60%);
-    background-size: 200% 200%;
-    animation: frostFlow 15s ease infinite alternate;
-}
-
-/* Background Movement Animation */
-@keyframes frostFlow {
-    0% { background-position: 0% 0%; }
-    100% { background-position: 100% 100%; }
-}
-
-.container {
-    max-width: 850px;
-    margin: 0 auto;
-    padding: 0 20px 100px;
-}
-
-/* 1. Intro Screen & Glowy Avatar */
-.intro-screen {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.avatar-container {
-    width: 170px;
-    height: 170px;
-    margin-bottom: 2.5rem;
     position: relative;
+    
+    /* 1. The Base Gradient */
+    background: radial-gradient(circle at center, #0a192f 0%, #020b1a 100%);
 }
 
-.avatar-img {
+/* 2. Custom Grid Structure Behind Content */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid var(--accent-blue);
-    /* Pulsating Frost Glow */
-    box-shadow: 0 0 30px var(--glow-color);
-    animation: avatarPulse 5s ease-in-out infinite;
+    /* Creates a subtle blueprint/grid look */
+    background-image: 
+        linear-gradient(var(--border-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
+    background-size: 50px 50px;
+    mask-image: radial-gradient(ellipse at center, black, transparent 80%);
+    opacity: 0.15;
+    z-index: -1;
+    animation: gridScroll 20s linear infinite;
 }
 
-@keyframes avatarPulse {
-    0%, 100% { 
-        box-shadow: 0 0 20px var(--glow-color); 
-        transform: scale(1); 
-    }
-    50% { 
-        box-shadow: 0 0 50px rgba(56, 189, 248, 0.6); 
-        transform: scale(1.03); 
-    }
+/* 3. Floating Light Orbs for "Glow" */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 30%, var(--glow-color) 0%, transparent 20%),
+        radial-gradient(circle at 80% 70%, var(--glow-color) 0%, transparent 20%);
+    filter: blur(50px);
+    z-index: -1;
+    animation: floatingGlow 10s ease-in-out infinite alternate;
 }
 
-/* Titles and Headers */
-h1, h2 {
-    font-family: 'Poppins', sans-serif;
-    color: #ffffff;
-    text-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+/* Animations for the Background Structures */
+@keyframes gridScroll {
+    from { background-position: 0 0; }
+    to { background-position: 50px 50px; }
 }
 
-.eyebrow {
-    color: var(--accent-blue);
-    font-weight: 600;
-    font-size: 0.75rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    display: block;
-    margin-bottom: 0.8rem;
+@keyframes floatingGlow {
+    0% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+    50% { transform: translate(-5%, 5%) scale(1.2); opacity: 0.8; }
+    100% { transform: translate(5%, -5%) scale(1); opacity: 0.5; }
 }
 
-/* 2. Cards & Hover Effects */
-.cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1rem;
-}
-
-.server-card {
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
-    padding: 1.2rem;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: inherit;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.server-card:hover {
-    border-color: var(--accent-blue);
-    background: rgba(56, 189, 248, 0.05);
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-.server-logo, .server-logo-placeholder {
-    width: 52px;
-    height: 52px;
-    border-radius: 12px;
-    margin-right: 1.2rem;
-    border: 1px solid rgba(56, 189, 248, 0.2);
-}
-
-.server-logo-placeholder {
-    background: #1e293b;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    color: var(--accent-blue);
-}
-
-/* Badges */
-.badge {
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    font-weight: 700;
-    padding: 4px 10px;
-    border-radius: 6px;
-    margin-right: 10px;
-    color: #fff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-.badge.owner { background-color: var(--badge-owner); }
-.badge.mod { background-color: var(--badge-mod); }
-.badge.helper { background-color: var(--badge-helper); }
-
-/* Stats Bar */
-.stats-section {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin: 5rem 0;
-}
-
-.stat-block {
-    background: linear-gradient(145deg, #0d1e3d, #0a192f);
-    border: 1px solid var(--border-color);
-    padding: 2.5rem 1rem;
-    border-radius: 20px;
-    text-align: center;
-    transition: 0.3s;
-}
-
-.stat-block:hover {
-    border-color: var(--accent-blue);
-    box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
-}
-
-.stat-number {
-    display: block;
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: var(--accent-blue);
-}
-
-.stat-label {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* Contact Specifics */
-.card-icon {
-    margin-left: auto;
-    font-size: 1.1rem;
-    color: var(--text-secondary);
-    transition: 0.3s;
-}
-
-.server-card:hover .card-icon {
-    color: var(--accent-blue);
-    transform: translateX(3px);
-}
-
-/* Responsive */
-@media (max-width: 650px) {
-    .stats-section { grid-template-columns: 1fr; gap: 1rem; }
-    .intro-screen { height: auto; padding: 120px 20px; }
-}
-/* Section Styling (Matches Screenshot_20260503-193540.jpg layout) */
-h1 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    letter-spacing: -0.5px;
-}
-
-.eyebrow {
-    color: #7dd3fc; /* Brighter accent for readability */
-    font-weight: 600;
-    font-size: 0.7rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    display: block;
-    margin-bottom: 0.5rem;
-}
-
-/* Grid & Cards */
-.cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 1rem;
-    margin-bottom: 3rem;
-}
-
-.server-card {
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 1rem;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: inherit;
-    transition: all 0.3s ease;
-}
-
-.server-card:hover {
-    border-color: var(--accent-blue);
-    background: #111a30;
-    transform: translateY(-3px);
-}
-
-.server-logo, .server-logo-placeholder {
-    width: 44px;
-    height: 44px;
-    border-radius: 8px;
-    margin-right: 1rem;
-}
-
-.server-logo-placeholder {
-    background: #1e293b;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    color: var(--accent-blue);
-}
-
-.badge {
-    font-size: 0.6rem;
-    text-transform: uppercase;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-right: 8px;
-    color: white;
-}
-
-/* Stats (Matches columns in Screenshot_20260503-193540.jpg) */
-.stats-section {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    margin: 4rem 0;
-}
-
-.stat-block {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    padding: 2rem 1rem;
-    border-radius: 12px;
-    text-align: center;
-}
-
-.stat-number {
-    display: block;
-    font-size: 1.8rem;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    color: var(--text-primary);
-}
-
-.stat-label {
-    font-size: 0.75rem;
-    color: var(--text-secondary);
-}
-
-/* Mobile Tweak */
-@media (max-width: 600px) {
-    .stats-section { grid-template-columns: 1fr; }
-    .cards-grid { grid-template-columns: 1fr; }
-    .intro-screen { height: auto; padding: 100px 20px; }
-}
-}
-
-.intro-badges {
-    display: flex;
-    gap: 15px;
-    margin-top: 1rem;
-}
-
-.intro-badge {
-    color: var(--accent-blue);
-    font-size: 0.8rem;
-    font-weight: 600;
-    background: #ffffff;
-    padding: 5px 12px;
-    border-radius: 20px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
-
-.intro-badge i { margin-right: 4px; }
-
-/* Section Grouping */
-.section-group { margin-bottom: 4rem; }
-.section-header { display: flex; align-items: center; margin-bottom: 0.5rem; }
-
-/* The cards grid (Matches Screenshot_20260503-193540.jpg) */
-.cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: 1rem;
-}
-
-.server-card {
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 1.2rem;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: inherit;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-}
-
-.server-card:hover { 
-    transform: translateY(-4px); 
-    border-color: var(--accent-blue);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-}
-
-.server-logo { width: 48px; height: 48px; border-radius: 10px; margin-right: 1rem; object-fit: cover; }
-
-.server-logo-placeholder {
-    width: 48px;
-    height: 48px;
-    border-radius: 10px;
-    background-color: #e0f2fe;
-    color: var(--accent-blue);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin-right: 1rem;
-}
-
-.server-details { display: flex; flex-direction: column; flex-grow: 1; }
-.server-name { font-weight: 600; font-size: 1.05rem; color: var(--text-primary); margin-bottom: 4px; }
-.badges { display: flex; align-items: center; }
-.badge { font-size: 0.65rem; text-transform: uppercase; font-weight: 700; padding: 3px 10px; border-radius: 12px; margin-right: 10px; color: #fff; }
-.badge.owner { background-color: var(--badge-owner); }
-.badge.mod { background-color: var(--badge-mod); }
-.badge.helper { background-color: var(--badge-helper); }
-.server-count { font-size: 0.8rem; color: var(--text-secondary); display: flex; align-items: center; }
-
-/* Stats Blocks (Matches Screenshot_20260503-193540.jpg columns) */
-.stats-section {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin-bottom: 5rem;
-}
-
-.stat-block {
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
-    padding: 2.5rem 1rem;
-    text-align: center;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-}
-
-.stat-icon { font-size: 1.5rem; margin-bottom: 1rem; }
-.stat-icon.communities { color: var(--icon-communities); }
-.stat-icon.members { color: var(--icon-members); }
-.stat-icon.staffing { color: var(--icon-staffing); }
-.stat-number { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 2rem; color: var(--text-primary); }
-.stat-label { font-size: 0.85rem; color: var(--text-secondary); font-weight: 500; }
-
-/* Skills (Matches Screenshot_20260503-200220.jpg sections) */
-.skill-card {
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-}
-
-.skill-card i { font-size: 1.5rem; color: var(--accent-blue); margin-bottom: 1rem; display: block; }
-.skill-card h3 { color: var(--text-primary); margin-bottom: 0.5rem; }
-.skill-card p { color: var(--text-secondary); font-size: 0.95rem; }
-
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-    .stats-section { grid-template-columns: 1fr; }
-    .cards-grid { grid-template-columns: 1fr; }
+/* Add a glass-morphism effect to cards so they stand out against the grid */
+.server-card, .stat-block, .skill-card {
+    backdrop-filter: blur(10px);
+    background: rgba(13, 20, 37, 0.7) !important; /* Semi-transparent */
+    border: 1px solid rgba(56, 189, 248, 0.2) !important;
 }
