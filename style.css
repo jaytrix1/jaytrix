@@ -3,46 +3,49 @@ body {
   font-family: Arial;
   color: white;
   overflow-x: hidden;
-  background: #e0f7ff;
+
+  /* soft blue base */
+  background: #071a2b;
+
+  /* center everything */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
 }
 
-/* glowing moving blobs */
+/* glowing blobs */
 body::before,
 body::after {
   content: "";
   position: fixed;
-  width: 400px;
-  height: 400px;
-  background: rgba(135, 206, 250, 0.5);
+  width: 350px;
+  height: 350px;
+  background: rgba(0, 140, 255, 0.25);
   border-radius: 50%;
-  filter: blur(100px);
+  filter: blur(120px);
   z-index: -1;
-  animation: float 10s infinite ease-in-out;
+  animation: float 12s infinite ease-in-out;
 }
 
-/* first glow */
+/* top-left glow */
 body::before {
-  top: -100px;
-  left: -100px;
+  top: -120px;
+  left: -120px;
 }
 
-/* second glow */
+/* bottom-right glow */
 body::after {
   bottom: -120px;
   right: -120px;
-  background: rgba(173, 216, 255, 0.6);
-  animation-delay: 2s;
+  background: rgba(0, 110, 200, 0.25);
+  animation-delay: 3s;
 }
 
-/* animation movement */
+/* movement */
 @keyframes float {
-  0% {
-    transform: translate(0, 0);
-  }
-  50% {
-    transform: translate(80px, 60px);
-  }
-  100% {
-    transform: translate(0, 0);
-  }
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(60px, 40px); }
+  100% { transform: translate(0, 0); }
 }
