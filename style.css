@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Jaytrix Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Hi, I'm <span>Jaytrix</span></h1>
+    <p>Minecraft Staff • Community Builder • Server Enthusiast</p>
+
+    <div class="buttons">
+      <a href="https://discord.com/users/YOURID">Discord</a>
+      <a href="#">Projects</a>
+    </div>
+
+  </div>
+
+</body>
+</html>
