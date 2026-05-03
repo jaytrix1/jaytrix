@@ -8,56 +8,42 @@
 }
 
 :root {
-    --bg-color: #0d0d1a; /* Deep cosmic dark blue/purple */
-    --card-bg: #111122; /* Slightly lighter for cards */
-    --border-color: #1a1a2e; /* Dark border color */
-    --text-primary: #f5f5f7;
-    --text-secondary: #9999aa;
-    --accent-purple: #9d4edd; /* The eyebrow text and top border color */
+    /* Blue Theme Palette */
+    --bg-color: #f0f9ff; /* Very light sky blue */
+    --card-bg: #ffffff; /* Clean white for cards */
+    --border-color: #bae6fd; /* Light blue borders */
+    --text-primary: #0369a1; /* Deep blue for titles */
+    --text-secondary: #0ea5e9; /* Medium blue for descriptions */
+    --accent-blue: #0284c7; /* Primary accent blue */
+    --avatar-glow: rgba(14, 165, 233, 0.3);
     
     /* Server Badge Colors */
-    --badge-owner: #a17cf3;
-    --badge-mod: #38bdf8;
-    --badge-helper: #f37cd1;
+    --badge-owner: #0369a1;
+    --badge-mod: #0ea5e9;
+    --badge-helper: #38bdf8;
 
     /* Stat Icon Accent Colors */
-    --icon-communities: #5865f2; /* Discord blue */
-    --icon-members: #38bdf8;
-    --icon-staffing: #a17cf3;
+    --icon-communities: #2563eb; 
+    --icon-members: #0284c7;
+    --icon-staffing: #0ea5e9;
 }
 
 body {
     background-color: var(--bg-color);
-    /* Basic simulation of the background particles from image_0.png */
-    background-image: 
-        radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 3px),
-        radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 2px),
-        radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 3px),
-        radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 3px);
-    background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
-    background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+    /* Subtle blue dot pattern instead of stars */
+    background-image: radial-gradient(#bae6fd 1px, transparent 1px);
+    background-size: 30px 30px;
     
     color: var(--text-primary);
     font-family: 'IBM Plex Sans', sans-serif;
     font-weight: 400;
     line-height: 1.5;
-    padding-bottom: 50px; /* Space for the bottom slice */
 }
 
 .container {
     max-width: 800px;
     margin: 0 auto;
-    padding: 0 20px;
-    position: relative;
-}
-
-/* Phone Status Bar Spacer simulation */
-.status-bar-spacer {
-    height: 60px; /* Estimated height based on image_0.png */
-    width: 100%;
-    /* Top accent border from image_0.png */
-    border-top: 2px solid var(--accent-purple);
-    margin-top: 10px; /* Spacing from the true top */
+    padding: 0 20px 50px;
 }
 
 /* Typography */
@@ -66,11 +52,12 @@ h1 {
     font-weight: 700;
     font-size: 2.2rem;
     margin-bottom: 2rem;
+    color: var(--text-primary);
     letter-spacing: -0.5px;
 }
 
 .eyebrow {
-    color: var(--accent-purple);
+    color: var(--accent-blue);
     font-family: 'IBM Plex Sans', sans-serif;
     font-weight: 600;
     font-size: 0.75rem;
@@ -84,212 +71,154 @@ h1 {
     margin-left: auto;
 }
 
-/* Scroll indicator (image_1.png only) */
-.scroll-indicator {
+/* 1. Intro Screen Section (Matches layout from Screenshot_20260503-200612.jpg) */
+.intro-screen {
+    height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    color: var(--text-secondary);
-    font-size: 0.65rem;
-    letter-spacing: 2px;
-    margin-bottom: 4rem;
     text-align: center;
+    padding: 0 20px;
+    background: linear-gradient(180deg, #e0f2fe 0%, #f0f9ff 100%);
 }
 
-.scroll-text {
-    margin-bottom: 5px;
+.avatar-container {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    position: relative;
+    margin-bottom: 3rem;
 }
+
+.avatar-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #ffffff;
+    box-shadow: 0 10px 25px var(--avatar-glow);
+}
+
+.intro-text p {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.intro-badges {
+    display: flex;
+    gap: 15px;
+    margin-top: 1rem;
+}
+
+.intro-badge {
+    color: var(--accent-blue);
+    font-size: 0.8rem;
+    font-weight: 600;
+    background: #ffffff;
+    padding: 5px 12px;
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.intro-badge i { margin-right: 4px; }
 
 /* Section Grouping */
-.section-group {
-    margin-bottom: 4rem;
-}
+.section-group { margin-bottom: 4rem; }
+.section-header { display: flex; align-items: center; margin-bottom: 0.5rem; }
 
-.section-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 0.5rem;
-}
-
-/* The cards grid from image_0.png */
+/* The cards grid (Matches Screenshot_20260503-193540.jpg) */
 .cards-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
     gap: 1rem;
 }
 
-/* The stylized server card */
 .server-card {
     background-color: var(--card-bg);
     border: 1px solid var(--border-color);
     border-radius: 12px;
-    padding: 1rem;
+    padding: 1.2rem;
     display: flex;
     align-items: center;
     text-decoration: none;
     color: inherit;
-    transition: transform 0.2s ease, border-color 0.2s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
-.server-card:hover {
-    transform: translateY(-2px);
-    border-color: #2a2a4e; /* Lighten border on hover */
+.server-card:hover { 
+    transform: translateY(-4px); 
+    border-color: var(--accent-blue);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
-.server-logo {
-    width: 44px;
-    height: 44px;
-    border-radius: 8px;
-    margin-right: 1rem;
-    object-fit: cover; /* Ensures the logo fits well */
-}
+.server-logo { width: 48px; height: 48px; border-radius: 10px; margin-right: 1rem; object-fit: cover; }
 
-.server-details {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-}
-
-.server-name {
-    font-weight: 600;
-    font-size: 1rem;
-    margin-bottom: 4px;
-}
-
-.badges {
-    display: flex;
-    align-items: center;
-}
-
-.badge {
-    font-size: 0.6rem;
-    text-transform: uppercase;
-    font-weight: 600;
-    padding: 2px 8px;
+.server-logo-placeholder {
+    width: 48px;
+    height: 48px;
     border-radius: 10px;
-    margin-right: 10px;
-}
-
-.badge.owner { background-color: var(--badge-owner); color: #fff; }
-.badge.mod { background-color: var(--badge-mod); color: #fff; }
-.badge.helper { background-color: var(--badge-helper); color: #fff; }
-
-.server-count {
-    font-size: 0.75rem;
-    color: var(--text-secondary);
+    background-color: #e0f2fe;
+    color: var(--accent-blue);
     display: flex;
     align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-right: 1rem;
 }
 
-.server-count i {
-    font-size: 0.6rem;
-    margin-right: 4px;
-}
+.server-details { display: flex; flex-direction: column; flex-grow: 1; }
+.server-name { font-weight: 600; font-size: 1.05rem; color: var(--text-primary); margin-bottom: 4px; }
+.badges { display: flex; align-items: center; }
+.badge { font-size: 0.65rem; text-transform: uppercase; font-weight: 700; padding: 3px 10px; border-radius: 12px; margin-right: 10px; color: #fff; }
+.badge.owner { background-color: var(--badge-owner); }
+.badge.mod { background-color: var(--badge-mod); }
+.badge.helper { background-color: var(--badge-helper); }
+.server-count { font-size: 0.8rem; color: var(--text-secondary); display: flex; align-items: center; }
 
-/* Specific styling for the retired text section in Past experience */
-.status-count {
-    display: flex;
-    align-items: center;
-}
-
-.retired-mod {
-    font-size: 0.75rem;
-    color: var(--text-secondary);
-    margin-right: 10px;
-}
-
-.server-count i {
-    font-size: 0.6rem;
-    margin-right: 4px;
-}
-
-.card-icon {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    margin-left: auto;
-    opacity: 0.5;
-}
-
-/* Stats Blocks Section */
+/* Stats Blocks (Matches Screenshot_20260503-193540.jpg columns) */
 .stats-section {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
+    gap: 1.5rem;
     margin-bottom: 5rem;
 }
 
 .stat-block {
     background-color: var(--card-bg);
     border: 1px solid var(--border-color);
-    border-radius: 12px;
+    border-radius: 16px;
     padding: 2.5rem 1rem;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
-.stat-icon {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-}
-
+.stat-icon { font-size: 1.5rem; margin-bottom: 1rem; }
 .stat-icon.communities { color: var(--icon-communities); }
 .stat-icon.members { color: var(--icon-members); }
 .stat-icon.staffing { color: var(--icon-staffing); }
+.stat-number { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 2rem; color: var(--text-primary); }
+.stat-label { font-size: 0.85rem; color: var(--text-secondary); font-weight: 500; }
 
-.stat-number {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    font-size: 1.8rem;
-    line-height: 1.2;
-}
-
-.stat-label {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    font-weight: 400;
-}
-
-/* About Section */
-.about-section {
-    margin-bottom: 5rem;
-}
-
-.about-content {
+/* Skills (Matches Screenshot_20260503-200220.jpg sections) */
+.skill-card {
     background-color: var(--card-bg);
     border: 1px solid var(--border-color);
     border-radius: 12px;
-    padding: 2.5rem;
+    padding: 2rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
-.about-content p {
-    font-size: 1rem;
-    color: var(--text-secondary);
-    margin-bottom: 1.5rem;
-    line-height: 1.7;
-}
-
-.about-content p:last-child {
-    margin-bottom: 0;
-}
-
-/* Bottom Slice indicator - basic simulation */
-body::after {
-    content: '';
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 10vh;
-    background: linear-gradient(to top, rgba(13, 13, 26, 1), rgba(13, 13, 26, 0));
-    pointer-events: none;
-    z-index: 10;
-}
+.skill-card i { font-size: 1.5rem; color: var(--accent-blue); margin-bottom: 1rem; display: block; }
+.skill-card h3 { color: var(--text-primary); margin-bottom: 0.5rem; }
+.skill-card p { color: var(--text-secondary); font-size: 0.95rem; }
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
-    h1 { font-size: 1.8rem; }
-    .cards-grid { grid-template-columns: 1fr; }
     .stats-section { grid-template-columns: 1fr; }
+    .cards-grid { grid-template-columns: 1fr; }
 }
