@@ -1,8 +1,5 @@
-/* --- 1. GENERAL RESET & THEME --- */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0; padding: 0; box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -14,7 +11,6 @@
     --text-secondary: #7dd3fc; 
     --accent-blue: #38bdf8; 
     --glow-color: rgba(56, 189, 248, 0.4); 
-    
     --badge-owner: #0369a1;
     --badge-mod: #0ea5e9;
     --badge-helper: #38bdf8;
@@ -24,21 +20,15 @@ body {
     background-color: var(--bg-color);
     color: var(--text-primary);
     font-family: 'IBM Plex Sans', sans-serif;
-    overflow-x: hidden;
     line-height: 1.6;
-    position: relative;
 }
 
-/* --- 2. ANIMATED BACKGROUNDS --- */
+/* Background Grid */
 body::before {
-    content: "";
-    position: fixed;
-    top: 0; left: 0; width: 200%; height: 200%;
-    background-image: 
-        linear-gradient(rgba(56, 189, 248, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
-    background-size: 60px 60px;
-    z-index: -2;
+    content: ""; position: fixed; top: 0; left: 0; width: 200%; height: 200%;
+    background-image: linear-gradient(rgba(56, 189, 248, 0.05) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
+    background-size: 60px 60px; z-index: -2;
     animation: gridMove 40s linear infinite;
 }
 
@@ -47,156 +37,44 @@ body::before {
     100% { transform: translate(-60px, -60px); }
 }
 
-/* --- 3. LAYOUT --- */
-.container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 20px 100px;
-    position: relative;
-    z-index: 1;
-}
+.container { max-width: 900px; margin: 0 auto; padding: 50px 20px; }
+.section-group { margin-top: 4rem; }
+h1, h2, h3 { font-family: 'Poppins', sans-serif; color: #fff; }
+.section-title { font-size: 2rem; margin-bottom: 1.5rem; }
+.eyebrow { color: var(--accent-blue); letter-spacing: 2px; font-size: 0.7rem; font-weight: bold; }
 
-.section-group { margin-top: 5rem; }
-.section-title { font-size: 2.2rem; margin-bottom: 2rem; color: #fff; font-family: 'Poppins'; text-shadow: 0 0 10px rgba(56, 189, 248, 0.2); }
+/* Intro */
+.intro-screen { height: 80vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.avatar-img { width: 150px; height: 150px; border-radius: 50%; border: 3px solid var(--accent-blue); box-shadow: 0 0 20px var(--glow-color); margin-bottom: 20px; }
 
-/* --- 4. INTRO SCREEN --- */
-.intro-screen {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.avatar-img {
-    width: 170px; height: 170px;
-    border-radius: 50%;
-    border: 3px solid var(--accent-blue);
-    box-shadow: 0 0 30px var(--glow-color);
-    margin-bottom: 2rem;
-    transition: transform 0.3s ease;
-}
-
-.avatar-img:hover { transform: scale(1.05); }
-
-.eyebrow {
-    color: var(--accent-blue);
-    font-weight: 600;
-    font-size: 0.75rem;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    display: block;
-    margin-bottom: 0.5rem;
-}
-
-/* --- 5. ROLES & RESPONSIBILITIES (NEW) --- */
-.roles-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
-    margin-bottom: 3rem;
-}
-
-.role-box {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    padding: 2rem;
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
-    transition: border-color 0.3s ease, transform 0.3s ease;
-}
-
-.role-box:hover {
-    border-color: var(--accent-blue);
-    transform: translateY(-5px);
-}
-
-.role-box h3 {
-    color: var(--accent-blue);
-    margin-bottom: 1.2rem;
-    font-size: 1.3rem;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.role-list {
-    list-style: none;
-}
-
-.role-list li {
-    position: relative;
-    padding-left: 22px;
-    margin-bottom: 12px;
-    font-size: 0.95rem;
-    color: var(--text-secondary);
-    line-height: 1.4;
-}
-
-.role-list li::before {
-    content: "▹";
-    position: absolute;
-    left: 0;
-    color: var(--accent-blue);
-    font-weight: bold;
-}
-
-/* --- 6. CARDS & GRID --- */
-.cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-}
+/* Roles Grid */
+.roles-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+.role-box { background: var(--card-bg); border: 1px solid var(--border-color); padding: 1.5rem; border-radius: 15px; backdrop-filter: blur(10px); transition: 0.3s; }
+.role-box:hover { border-color: var(--accent-blue); transform: translateY(-5px); }
+.role-box h3 { color: var(--accent-blue); margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
+.role-list { list-style: none; }
+.role-list li { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 8px; padding-left: 15px; position: relative; }
+.role-list li::before { content: "▹"; position: absolute; left: 0; color: var(--accent-blue); }
 
 /* Server Cards */
-.server-card {
-    background: var(--card-bg);
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
-    padding: 1.2rem;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: inherit;
-    transition: 0.3s ease;
-}
+.cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+.server-card { background: var(--card-bg); border: 1px solid var(--border-color); padding: 1rem; border-radius: 12px; display: flex; align-items: center; text-decoration: none; color: inherit; transition: 0.3s; }
+.server-card:hover { border-color: var(--accent-blue); transform: scale(1.02); }
+.server-logo, .server-logo-placeholder { width: 45px; height: 45px; border-radius: 8px; margin-right: 15px; }
+.server-logo-placeholder { background: #1e293b; display: flex; align-items: center; justify-content: center; color: var(--accent-blue); }
 
-.server-card:hover {
-    border-color: var(--accent-blue);
-    transform: scale(1.02);
-    background: rgba(56, 189, 248, 0.08);
-}
+/* Stats */
+.stats-section { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 3rem 0; }
+.stat-block { background: var(--card-bg); border: 1px solid var(--border-color); padding: 1.5rem; border-radius: 15px; text-align: center; }
+.stat-number { font-size: 1.8rem; font-weight: bold; color: var(--accent-blue); display: block; }
+.stat-label { font-size: 0.7rem; color: var(--text-secondary); text-transform: uppercase; }
 
-.server-logo, .server-logo-placeholder {
-    width: 50px; height: 50px; border-radius: 10px; margin-right: 1.2rem;
-}
+/* Badges */
+.badge { font-size: 0.6rem; padding: 3px 8px; border-radius: 4px; color: #fff; text-transform: uppercase; font-weight: bold; }
+.badge.mod { background: var(--badge-mod); }
+.badge.helper { background: var(--badge-helper); }
+.badge.owner { background: var(--badge-owner); }
 
-.server-logo-placeholder {
-    background: #1e293b; display: flex; align-items: center; justify-content: center;
-    font-size: 1.5rem; color: var(--accent-blue);
+@media (max-width: 600px) {
+    .stats-section { grid-template-columns: 1fr; }
 }
-
-/* --- 7. SKILL CARDS (INTERACTIVE) --- */
-.skill-card {
-    background: var(--card-bg);
-    backdrop-filter: blur(12px);
-    border: 1px solid var(--border-color);
-    padding: 2.5rem 2rem;
-    border-radius: 20px;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    position: relative;
-    overflow: hidden;
-}
-
-.skill-card:hover {
-    transform: translateY(-12px);
-    border-color: var(--accent-blue);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-}
-
-.skill-card i {
-    font-size: 2.5rem;
-    color: var(--accent-blue);
-    margin-bottom: 1.5rem;
