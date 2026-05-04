@@ -247,3 +247,22 @@ body::before {
     .stats-section { grid-template-columns: 1fr; }
     .intro-screen { height: auto; padding: 120px 20px; }
 }
+/* Ensure badges inside headings look aligned */
+h3 .badge {
+    margin-left: 10px;
+    vertical-align: middle;
+    display: inline-flex;
+    align-items: center;
+    transform: translateY(-2px); /* Adjusts height to match text */
+}
+
+/* Base badge styling (if not already perfect) */
+.badge {
+    font-size: 0.6rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 4px;
+    color: #fff;
+    text-transform: uppercase;
+    background: var(--badge-mod);
+}
