@@ -273,7 +273,56 @@ h1, h2 {
     font-weight: 700;
     color: var(--accent-blue);
 }
+/* --- ROLES SECTION STYLES --- */
+.roles-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
 
+.role-box {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 2rem;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.role-box h3 {
+    color: var(--accent-blue);
+    margin-bottom: 1.2rem;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.role-list {
+    list-style: none;
+}
+
+.role-list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+.role-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+    font-weight: bold;
+}
+
+/* Responsive fix for roles */
+@media (max-width: 768px) {
+    .roles-container {
+        grid-template-columns: 1fr;
+    }
+}
 .stat-label {
     font-size: 0.8rem;
     color: var(--text-secondary);
